@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludo Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align items to the top */
+            align-items: center; /* Center horizontally */
+            height: 100vh; /* Full height of the viewport */
+            background-color: #f0f8ff; /* Light blue background */
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Hide scrollbars */
+        }
+
+        img {
+            width: 200px; /* Set width of the GIF */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 20px; /* Space from the top */
+            border-radius: 8px; /* Rounded corners for a modern look */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Light shadow for depth */
+        }
+
+        .small-image {
+            width: 150px; /* Set width of the cutu.jpg image */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 20px; /* Space from the previous element */
+            border-radius: 8px; /* Rounded corners for a modern look */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Light shadow for depth */
+        }
+
+        p {
+            margin-top: 15px; /* Space between image and text */
+            font-size: 20px; /* Text size */
+            color: #333; /* Text color */
+            text-align: center; /* Center the text */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #FF6347; /* Light Coral */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Light shadow */
+            margin: 20px 0; /* Space around button */
+        }
+
+        button:hover {
+            background-color: #FF4500; /* Bright Orange on hover */
+        }
+
+        .heart {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background: red; /* Change heart color to red */
+            transform: rotate(-45deg);
+            animation: fall linear forwards; /* Use fall animation */
+            opacity: 0.8;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            border-radius: 50%;
+            background: red; /* Change heart color to red */
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(-45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(-45deg);
+                opacity: 0; /* Fade out as it falls */
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="ludo.gif" alt="Ludo Animation">
+    <p>Ludooooo, Will you be my boyfriend?</p>
+    <img class="small-image" src="cutu.jpg" alt="Cutu Image">
+
+    <button onclick="showHearts()">Yes</button>
+
+    <script>
+        function showHearts() {
+            for (let i = 0; i < 100; i++) { // Create 100 hearts
+                createHeart();
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+
+            // Randomize size and position
+            heart.style.left = Math.random() * window.innerWidth + "px"; // Random horizontal position
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // Random duration between 3s and 5s
+            heart.style.animationDelay = Math.random() * 2 + "s"; // Random delay
+
+            document.body.appendChild(heart);
+
+            // Remove the heart after animation ends
+            setTimeout(() => {
+                heart.remove();
+            }, 5000); // Heart will disappear after 5 seconds
+        }
+    </script>
+    <p>No er kono option nei pagol</p>
+</body>
+</html>
